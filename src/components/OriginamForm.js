@@ -1,6 +1,6 @@
 import React from 'react';
 
-const originalForm = () => {
+const OriginamForm = () => {
   return (
     <div>
       <form>
@@ -19,4 +19,4 @@ const originalForm = () => {
   )
 }
 
-export default originalForm;
+export default OriginamForm;

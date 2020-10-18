@@ -1,12 +1,14 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
 import './App.css';
-import YoutubeForm from './components/YoutubeForm';
+import OriginamForm from './components/OriginamForm';
+import UseFormik from './components/UseFormik';
+
 
 function App() {
   return (
     <div className="App">
-      <YoutubeForm />
+      {/*<OriginamForm />*/}
+      <UseFormik />
     </div>
   );
 }
