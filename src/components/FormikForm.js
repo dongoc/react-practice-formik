@@ -12,22 +12,6 @@ const UseFormik = () => {
   const onSubmit = (values) => {
       console.log('onSubmit', values);
   }
-  // NOTE : validate func MUST return an OBJECT(errors)
-  const validate = (values) => {
-      let errors = {};
-      // values.name values.email values.channel
-      // errors.name errors.email errors.channel
-      if (!values.name) {
-        errors.name = 'Required';
-      }
-      if (!values.email) {
-        errors.email = 'Required';
-      }
-      if (!values.channel) {
-        errors.channel = 'Required';
-      }
-      return errors;
-  }
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Name Required'),
@@ -56,6 +40,7 @@ const UseFormik = () => {
 
   console.log(formik.touched);
 
+  // NOTE : onChange, value, onBlur -> {...formik.getFieldProps('name')}
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -63,9 +48,7 @@ const UseFormik = () => {
           <label htmlFor="name">Name</label>
           <input 
             type="text" id="name" name="name"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps('name')}
           />
           {
             formik.touched.name && formik.errors.name 
@@ -78,9 +61,7 @@ const UseFormik = () => {
           <label htmlFor="name">E-mail</label>
           <input 
             type="email" id="email" name="email" 
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps('name')}
           />
           {
             formik.touched.email && formik.errors.email 
@@ -93,9 +74,7 @@ const UseFormik = () => {
           <label htmlFor="name">Channel</label>
           <input 
             type="text" id="channel" name="channel" 
-            onChange={formik.handleChange}
-            value={formik.values.channel}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps('name')}
           />
           {
             formik.touched.channel && formik.errors.channel 

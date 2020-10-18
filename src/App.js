@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
 // import OriginamForm from './components/OriginamForm';
-import UseFormik from './components/UseFormik';
+// import UseFormik from './components/UseFormik';
+import FormikForm from './components/FormikForm';
 
 
 function App() {
   return (
     <div className="App">
       {/*<OriginamForm />*/}
-      <UseFormik />
+      {/*<UseFormik />*/}
+      <FormikForm />
     </div>
   );
 }
