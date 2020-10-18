@@ -1,12 +1,12 @@
 import React from 'react';
 // import { useFormik } from 'formik';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 // TITLE : formik Components
 // - Formik <- replace useFormik
 // - Form <- replace form / not need 'onSubmit' props
-// - Field
+// - Field <- replace input
 // - Error Messages
 
 const UseFormik = () => {
@@ -43,7 +43,7 @@ const UseFormik = () => {
       <Form>
         <div className="form-contril">
           <label htmlFor="name">Name</label>
-          <input 
+          <Field 
             type="text" id="name" name="name"
             {...formik.getFieldProps('name')}
           />
@@ -56,7 +56,7 @@ const UseFormik = () => {
         
         <div className="form-contril">
           <label htmlFor="name">E-mail</label>
-          <input 
+          <Field 
             type="email" id="email" name="email" 
             {...formik.getFieldProps('name')}
           />
@@ -69,7 +69,7 @@ const UseFormik = () => {
 
         <div className="form-contril">
           <label htmlFor="name">Channel</label>
-          <input 
+          <Field 
             type="text" id="channel" name="channel" 
             {...formik.getFieldProps('name')}
           />
