@@ -30,20 +30,23 @@ const UseFormik = () => {
 
   // TITLE useFormik 
 
-  // TITLE useFormik has object arguments
+  // CASE useFormik has object arguments
   // 1. initialValues -> 각 input의 handleChange를 통해 formik.values에 반영된다
   // 2. onSubmit -> form의 handleSubmit을 통해 onSubmit 실행. button에 type="submit" 추가
   // 3. validate 
 
-  // TITLE useFormik returns object
-  // formik.values
-  // formik.errors
+  // CASE useFormik returns object
+  // formik.values <- onChange={handleChange} 
+  // formik.errors <- validate
+  // formik.touched <- onBlur={handleBlur}   // true, false
 
   const formik = useFormik({
     initialValues, 
     onSubmit,
     validate
   })
+
+  console.log(formik.touched);
 
   return (
     <div>
@@ -54,6 +57,7 @@ const UseFormik = () => {
             type="text" id="name" name="name"
             onChange={formik.handleChange}
             value={formik.values.name}
+            onBlur={formik.handleBlur}
           />
           {formik.errors.name ? <div className="error">formik.errors.name</div> : null}
         </div>
@@ -64,6 +68,7 @@ const UseFormik = () => {
             type="email" id="email" name="email" 
             onChange={formik.handleChange}
             value={formik.values.email}
+            onBlur={formik.handleBlur}
           />
           {formik.errors.email ? <div className="error">formik.errors.email</div> : null}
         </div>
@@ -74,6 +79,7 @@ const UseFormik = () => {
             type="text" id="channel" name="channel" 
             onChange={formik.handleChange}
             value={formik.values.channel}
+            onBlur={formik.handleBlur}
           />
           {formik.errors.channel ? <div className="error">formik.errors.channel</div> : null}
         </div>
