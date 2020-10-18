@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useFormik } from 'formik';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 // TITLE : formik Components
@@ -47,11 +47,7 @@ const UseFormik = () => {
             type="text" id="name" name="name"
             {...formik.getFieldProps('name')}
           />
-          {
-            formik.touched.name && formik.errors.name 
-              ? <div className="error">{formik.errors.name}</div> 
-              : null
-          }
+          <ErrorMessage name='name' />
         </div>
         
         <div className="form-contril">
@@ -60,11 +56,7 @@ const UseFormik = () => {
             type="email" id="email" name="email" 
             {...formik.getFieldProps('name')}
           />
-          {
-            formik.touched.email && formik.errors.email 
-              ? <div className="error">{formik.errors.email}</div> 
-              : null
-          }
+          <ErrorMessage name='email' />
         </div>
 
         <div className="form-contril">
@@ -73,11 +65,7 @@ const UseFormik = () => {
             type="text" id="channel" name="channel" 
             {...formik.getFieldProps('name')}
           />
-          {
-            formik.touched.channel && formik.errors.channel 
-              ? <div className="error">{formik.errors.channel}</div> 
-              : null
-          }
+          <ErrorMessage name='channel' />
         </div>
 
         <button type="submit">Submit</button>
