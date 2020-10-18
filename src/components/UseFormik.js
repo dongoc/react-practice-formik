@@ -28,10 +28,17 @@ const UseFormik = () => {
       return errors;
     }
 
-  // TITLE useFormik returns object
+  // TITLE useFormik 
+
+  // TITLE useFormik has object arguments
   // 1. initialValues -> 각 input의 handleChange를 통해 formik.values에 반영된다
   // 2. onSubmit -> form의 handleSubmit을 통해 onSubmit 실행. button에 type="submit" 추가
-  // 3. validate
+  // 3. validate 
+
+  // TITLE useFormik returns object
+  // formik.values
+  // formik.errors
+
   const formik = useFormik({
     initialValues, 
     onSubmit,
@@ -41,26 +48,35 @@ const UseFormik = () => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input 
-          type="text" id="name" name="name"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
+        <div className="form-contril">
+          <label htmlFor="name">Name</label>
+          <input 
+            type="text" id="name" name="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          {formik.errors.name ? <div className="error">formik.errors.name</div> : null}
+        </div>
         
-        <label htmlFor="name">E-mail</label>
-        <input 
-          type="email" id="email" name="email" 
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
+        <div className="form-contril">
+          <label htmlFor="name">E-mail</label>
+          <input 
+            type="email" id="email" name="email" 
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+          {formik.errors.email ? <div className="error">formik.errors.email</div> : null}
+        </div>
 
-        <label htmlFor="name">Channel</label>
-        <input 
-          type="text" id="channel" name="channel" 
-          onChange={formik.handleChange}
-          value={formik.values.channel}
-        />
+        <div className="form-contril">
+          <label htmlFor="name">Channel</label>
+          <input 
+            type="text" id="channel" name="channel" 
+            onChange={formik.handleChange}
+            value={formik.values.channel}
+          />
+          {formik.errors.channel ? <div className="error">formik.errors.channel</div> : null}
+        </div>
 
         <button type="submit">Submit</button>
       </form>
