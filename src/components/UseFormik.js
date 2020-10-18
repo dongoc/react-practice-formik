@@ -3,20 +3,16 @@ import { useFormik } from 'formik';
 
 const UseFormik = () => {
 
-  // TITLE useFormik returns object
-  // 1. initialValues -> 각 input의 handleChange를 통해 formik.values에 반영된다
-  // 2. onSubmit -> form의 handleSubmit을 통해 onSubmit 실행. button에 type="submit" 추가
-  // 3. validate
-  const formik = useFormik({
-    initialValues: {
+  const initialValues = {
       name: '',
       email: '',
       channel: ''
-    },
-    onSubmit: (values) => {
+  }
+  const onSubmit = (values) => {
       console.log('onSubmit', values);
-    },
-    validate: (values) => {
+  }
+  // NOTE : validate func MUST return an OBJECT(errors)
+  const validate = (values) => {
       let errors = {};
       // values.name values.email values.channel
       // errors.name errors.email errors.channel
@@ -31,6 +27,15 @@ const UseFormik = () => {
       }
       return errors;
     }
+
+  // TITLE useFormik returns object
+  // 1. initialValues -> 각 input의 handleChange를 통해 formik.values에 반영된다
+  // 2. onSubmit -> form의 handleSubmit을 통해 onSubmit 실행. button에 type="submit" 추가
+  // 3. validate
+  const formik = useFormik({
+    initialValues, 
+    onSubmit,
+    validate
   })
 
   return (
