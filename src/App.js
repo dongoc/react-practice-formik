@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import OriginamForm from './components/OriginamForm';
+// import OriginamForm from './components/OriginamForm';
 import UseFormik from './components/UseFormik';
 
 

@@ -4,19 +4,22 @@ import { useFormik } from 'formik';
 const UseFormik = () => {
 
   // TITLE useFormik returns object
-  // 1. initialValues -> handleChange를 통해 formik.values에 반영된다
-  // 2. 
+  // 1. initialValues -> 각 input의 handleChange를 통해 formik.values에 반영된다
+  // 2. onSubmit -> form의 handleSubmit을 통해 onSubmit 실행. button에 type="submit" 추가
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
       channel: ''
+    },
+    onSubmit: (values) => {
+      console.log('onSubmit', values);
     }
   })
-  
+
   return (
     <div>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Name</label>
         <input 
           type="text" id="name" name="name"
@@ -38,7 +41,7 @@ const UseFormik = () => {
           value={formik.values.channel}
         />
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   )
