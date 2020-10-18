@@ -2,6 +2,7 @@ import React from 'react';
 // import { useFormik } from 'formik';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import FormikControl from './FormikControl'
 
 // TITLE : formik Components
 // - Formik <- replace useFormik
@@ -9,7 +10,13 @@ import * as Yup from 'yup';
 // - Field <- replace input
 // - Error Messages
 
-const FormkiForm = () => {
+const FormikForm = () => {
+
+  const checkboxOptions = [
+    {key: 'Option 1', value: 'cOption1'},
+    {key: 'Option 2', value: 'cOption2'},
+    {key: 'Option 3', value: 'cOption3'}
+  ]
 
   const initialValues = {
       name: '',
@@ -17,6 +24,7 @@ const FormkiForm = () => {
       channel: '',
       comments: '',
       address: '',
+      checkboxOption: [],
   }
   const onSubmit = (values) => {
       console.log('onSubmit', values);
@@ -25,7 +33,8 @@ const FormkiForm = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required('Name Required'),
     email: Yup.string().email('Invalid email format').required('Email Required'),
-    channel: Yup.string().required('Channel Required')
+    channel: Yup.string().required('Channel Required'),
+    checkboxOption: Yup.array().required('required')
   })
 
   return (
@@ -38,7 +47,7 @@ const FormkiForm = () => {
         <div className="form-control">
           <label htmlFor="name">Name</label>
           <Field type="text" id="name" name="name"/>
-          <ErrorMessage name='name' />
+          <ErrorMessage name='name' component='div'/>
         </div>
         
         <div className="form-control">
@@ -63,7 +72,7 @@ const FormkiForm = () => {
           <label htmlFor="address">Address</label>
           <Field name="address">
             {(props) => {
-              console.log(props);
+              // console.log(props);
               const { field, form, meta } = props;
               return (
                 <div>
@@ -76,11 +85,16 @@ const FormkiForm = () => {
           <ErrorMessage name='comments' />
         </div>
 
-
+        <FormikControl
+          control='checkbox'
+          label='Checkbox topics'
+          name='checkboxOption'
+          options={checkboxOptions}
+        />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
   )
 }
 
-export default FormkiForm;
+export default FormikForm;
