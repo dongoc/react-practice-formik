@@ -1,11 +1,11 @@
 import React from 'react';
 // import { useFormik } from 'formik';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 // TITLE : formik Components
-// - Formik
-// - Form 
+// - Formik <- replace useFormik
+// - Form <- replace form / not need 'onSubmit' props
 // - Field
 // - Error Messages
 
@@ -40,7 +40,7 @@ const UseFormik = () => {
       validationSchema={validationSchema} 
       onSubmit={onSubmit}
     >
-      <form onSubmit={formik.handleSubmit}>
+      <Form>
         <div className="form-contril">
           <label htmlFor="name">Name</label>
           <input 
@@ -81,7 +81,7 @@ const UseFormik = () => {
         </div>
 
         <button type="submit">Submit</button>
-      </form>
+      </Form>
     </Formik>
   )
 }
