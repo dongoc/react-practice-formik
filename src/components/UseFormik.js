@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const UseFormik = () => {
 
@@ -28,6 +29,12 @@ const UseFormik = () => {
       return errors;
     }
 
+    const validationSchema = Yup.object({
+      name: Yup.string().required('Name Required'),
+      email: Yup.string().email('Invalid email format').required('Email Required'),
+      channel: Yup.string().required('Channel Required')
+    })
+
   // TITLE useFormik 
 
   // CASE useFormik has object arguments
@@ -43,7 +50,8 @@ const UseFormik = () => {
   const formik = useFormik({
     initialValues, 
     onSubmit,
-    validate
+    // validate
+    validationSchema
   })
 
   console.log(formik.touched);
@@ -61,7 +69,7 @@ const UseFormik = () => {
           />
           {
             formik.touched.name && formik.errors.name 
-              ? <div className="error">formik.errors.name</div> 
+              ? <div className="error">{formik.errors.name}</div> 
               : null
           }
         </div>
@@ -76,7 +84,7 @@ const UseFormik = () => {
           />
           {
             formik.touched.email && formik.errors.email 
-              ? <div className="error">formik.errors.email</div> 
+              ? <div className="error">{formik.errors.email}</div> 
               : null
           }
         </div>
@@ -91,7 +99,7 @@ const UseFormik = () => {
           />
           {
             formik.touched.channel && formik.errors.channel 
-              ? <div className="error">formik.errors.channel</div> 
+              ? <div className="error">{formik.errors.channel}</div> 
               : null
           }
         </div>
