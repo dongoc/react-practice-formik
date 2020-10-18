@@ -1,6 +1,13 @@
 import React from 'react';
-import { useFormik } from 'formik';
+// import { useFormik } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
+
+// TITLE : formik Components
+// - Formik
+// - Form 
+// - Field
+// - Error Messages
 
 const UseFormik = () => {
 
@@ -19,30 +26,20 @@ const UseFormik = () => {
     channel: Yup.string().required('Channel Required')
   })
 
-  // TITLE useFormik 
-
-  // CASE useFormik has object arguments
-  // 1. initialValues -> 각 input의 handleChange를 통해 formik.values에 반영된다
-  // 2. onSubmit -> form의 handleSubmit을 통해 onSubmit 실행. button에 type="submit" 추가
-  // 3. validate 
-
-  // CASE useFormik returns object
-  // formik.values <- onChange={handleChange} 
-  // formik.errors <- validate
-  // formik.touched <- onBlur={handleBlur}   // true, false
-
-  const formik = useFormik({
-    initialValues, 
-    onSubmit,
-    // validate
-    validationSchema
-  })
-
-  console.log(formik.touched);
+  // const formik = useFormik({
+  //   initialValues, 
+  //   onSubmit,
+  //   // validate
+  //   validationSchema
+  // })
 
   // NOTE : onChange, value, onBlur -> {...formik.getFieldProps('name')}
   return (
-    <div>
+    <Formik 
+      initialValues={initialValues} 
+      validationSchema={validationSchema} 
+      onSubmit={onSubmit}
+    >
       <form onSubmit={formik.handleSubmit}>
         <div className="form-contril">
           <label htmlFor="name">Name</label>
@@ -85,15 +82,8 @@ const UseFormik = () => {
 
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </Formik>
   )
 }
 
 export default UseFormik;
-
-/*
-Managing form state
-form state {
-  name: ''
-}
-*/
