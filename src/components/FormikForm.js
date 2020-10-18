@@ -26,14 +26,6 @@ const UseFormik = () => {
     channel: Yup.string().required('Channel Required')
   })
 
-  // const formik = useFormik({
-  //   initialValues, 
-  //   onSubmit,
-  //   // validate
-  //   validationSchema
-  // })
-
-  // NOTE : onChange, value, onBlur -> {...formik.getFieldProps('name')}
   return (
     <Formik 
       initialValues={initialValues} 
@@ -43,28 +35,19 @@ const UseFormik = () => {
       <Form>
         <div className="form-contril">
           <label htmlFor="name">Name</label>
-          <Field 
-            type="text" id="name" name="name"
-            {...formik.getFieldProps('name')}
-          />
+          <Field type="text" id="name" name="name"/>
           <ErrorMessage name='name' />
         </div>
         
         <div className="form-contril">
           <label htmlFor="name">E-mail</label>
-          <Field 
-            type="email" id="email" name="email" 
-            {...formik.getFieldProps('name')}
-          />
+          <Field type="email" id="email" name="email" />
           <ErrorMessage name='email' />
         </div>
 
         <div className="form-contril">
           <label htmlFor="name">Channel</label>
-          <Field 
-            type="text" id="channel" name="channel" 
-            {...formik.getFieldProps('name')}
-          />
+          <Field type="text" id="channel" name="channel" />
           <ErrorMessage name='channel' />
         </div>
 
